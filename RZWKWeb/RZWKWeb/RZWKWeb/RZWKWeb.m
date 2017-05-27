@@ -9,6 +9,12 @@
 #import "RZWKWeb.h"
 
 
+// 系统版本号
+#define kRZSystemVersion [[UIDevice currentDevice].systemVersion floatValue]
+#define kRZScreeWith [UIScreen mainScreen].bounds.size.width
+#define kRZScreeHeight [UIScreen mainScreen].bounds.size.height
+
+
 @interface RZWKWeb ()<WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate>
 /** wkwebview and progress */
 @property (nonatomic, strong) WKWebView *WKWeb;
@@ -27,17 +33,24 @@
     return self;
 }
 
-#pragma mark - 加载数据
+#pragma mark - 加载数据 1.0
 - (void)loadRequestWithUrlString:(NSString *)urlstring {
     [_WKWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSURL URLWithString:urlstring] ? urlstring : [self strUTF8Encoding:urlstring]]]];
 }
 - (NSString *)strUTF8Encoding:(NSString *)str
 {
-    if (kSystemVersion >= 9.0) {
+    if (kRZSystemVersion >= 9.0) {
         return [str stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     } else {
         return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
+}
+
+#pragma mark - 加载数据 2.0
+- (void)loadHTMLString:(NSString *)html {
+    NSString *fileURL = [NSString stringWithContentsOfFile:html encoding:NSUTF8StringEncoding error:nil];
+    NSURL *baseURL = [NSURL fileURLWithPath:fileURL];
+    [self.WKWeb loadHTMLString:fileURL baseURL:baseURL];
 }
 
 - (BOOL)back {
@@ -65,7 +78,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(nonnull WKNavigationAction *)navigationAction decisionHandler:(nonnull void (^)(WKNavigationActionPolicy))decisionHandler {
     NSString *strRequest = [navigationAction.request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
-    RZLog(@"%@", strRequest);
+    NSLog(@"%@", strRequest);
 }
 
 #pragma mark - 1、懒加载
@@ -92,12 +105,12 @@
         // 将UserConttentController设置到配置文件
         config.userContentController = userContent;
         // 高端的自定义配置创建WKWebView
-        _WKWeb = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreeWith, kScreeHeight-64) configuration:config];
+        _WKWeb = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kRZScreeWith, kRZScreeHeight-64) configuration:config];
         [self addSubview:_WKWeb];
         
         // 进度条
         self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        self.progressView.frame = CGRectMake(0, 0, kScreeWith, 2.f);
+        self.progressView.frame = CGRectMake(0, 0, kRZScreeWith, 2.f);
         self.progressView.tintColor = [UIColor colorWithRed:22.f / 255.f green:126.f / 255.f blue:251.f / 255.f alpha:1.0];
         [self addSubview:self.progressView];
     }

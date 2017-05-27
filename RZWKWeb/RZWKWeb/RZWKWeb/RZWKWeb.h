@@ -26,6 +26,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame withNativeMethodArr:(NSArray *)arr;
 - (void)loadRequestWithUrlString:(NSString *)urlstring;
+- (void)loadHTMLString:(NSString *)html;
 - (BOOL)back;
 - (BOOL)forward;
 

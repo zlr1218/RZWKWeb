@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "RZWebVC.h"
+
 @interface ViewController ()
 
 @end
@@ -16,14 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)pushToWKWebVC:(id)sender {
+    [self presentViewController:[RZWebVC new] animated:YES completion:nil];
 }
-
 
 @end

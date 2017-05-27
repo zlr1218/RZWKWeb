@@ -14,6 +14,8 @@
 		2A982C861ED925B100225BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A982C851ED925B100225BE5 /* Assets.xcassets */; };
 		2A982C891ED925B100225BE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A982C871ED925B100225BE5 /* LaunchScreen.storyboard */; };
 		2A982C931ED925F400225BE5 /* RZWKWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A982C921ED925F400225BE5 /* RZWKWeb.m */; };
+		2A982C951ED9272100225BE5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A982C941ED9272100225BE5 /* index.html */; };
+		2A982C9B1ED94FE700225BE5 /* RZWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A982C9A1ED94FE700225BE5 /* RZWebVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		2A982C8A1ED925B100225BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A982C911ED925F400225BE5 /* RZWKWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZWKWeb.h; sourceTree = "<group>"; };
 		2A982C921ED925F400225BE5 /* RZWKWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZWKWeb.m; sourceTree = "<group>"; };
+		2A982C941ED9272100225BE5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		2A982C991ED94FE700225BE5 /* RZWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZWebVC.h; sourceTree = "<group>"; };
+		2A982C9A1ED94FE700225BE5 /* RZWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZWebVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +66,12 @@
 		2A982C781ED925B100225BE5 /* RZWKWeb */ = {
 			isa = PBXGroup;
 			children = (
+				2A982C941ED9272100225BE5 /* index.html */,
 				2A982C901ED925F400225BE5 /* RZWKWeb */,
 				2A982C7C1ED925B100225BE5 /* AppDelegate.h */,
 				2A982C7D1ED925B100225BE5 /* AppDelegate.m */,
+				2A982C991ED94FE700225BE5 /* RZWebVC.h */,
+				2A982C9A1ED94FE700225BE5 /* RZWebVC.m */,
 				2A982C7F1ED925B100225BE5 /* ViewController.h */,
 				2A982C801ED925B100225BE5 /* ViewController.m */,
 				2A982C821ED925B100225BE5 /* Main.storyboard */,
@@ -151,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A982C891ED925B100225BE5 /* LaunchScreen.storyboard in Resources */,
+				2A982C951ED9272100225BE5 /* index.html in Resources */,
 				2A982C861ED925B100225BE5 /* Assets.xcassets in Resources */,
 				2A982C841ED925B100225BE5 /* Main.storyboard in Resources */,
 			);
@@ -166,6 +175,7 @@
 				2A982C931ED925F400225BE5 /* RZWKWeb.m in Sources */,
 				2A982C811ED925B100225BE5 /* ViewController.m in Sources */,
 				2A982C7E1ED925B100225BE5 /* AppDelegate.m in Sources */,
+				2A982C9B1ED94FE700225BE5 /* RZWebVC.m in Sources */,
 				2A982C7B1ED925B100225BE5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
