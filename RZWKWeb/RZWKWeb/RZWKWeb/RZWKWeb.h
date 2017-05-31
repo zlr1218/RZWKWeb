@@ -13,6 +13,7 @@
 @protocol RZWKWebDelegate <NSObject>
 
 @optional
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;
 - (void)handleScriptMessage:(WKScriptMessage *)message withWKWebView:(WKWebView *)webView;
 - (void)setTitle:(NSString *)title;
 

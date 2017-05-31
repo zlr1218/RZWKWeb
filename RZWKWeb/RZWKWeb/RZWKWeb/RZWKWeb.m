@@ -53,6 +53,8 @@
     [self.WKWeb loadHTMLString:fileURL baseURL:baseURL];
 }
 
+#pragma mark - 前进、后退
+
 - (BOOL)back {
     if ([self.WKWeb canGoBack]) {
         [self.WKWeb goBack];
@@ -72,6 +74,11 @@
 #pragma mark - 处理JS调用nativeMethod
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     [self.delegate handleScriptMessage:message withWKWebView:self.WKWeb];
+}
+
+#pragma mark - 生命周期
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self.delegate webView:webView didFinishNavigation:navigation];
 }
 
 #pragma mark - 捕捉链接
@@ -105,7 +112,7 @@
         // 将UserConttentController设置到配置文件
         config.userContentController = userContent;
         // 高端的自定义配置创建WKWebView
-        _WKWeb = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kRZScreeWith, kRZScreeHeight-64) configuration:config];
+        _WKWeb = [[WKWebView alloc] initWithFrame:self.bounds configuration:config];
         [self addSubview:_WKWeb];
         
         // 进度条
