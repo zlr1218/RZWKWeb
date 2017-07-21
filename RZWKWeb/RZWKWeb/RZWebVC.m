@@ -24,10 +24,12 @@
                      @"Pay",
                      @"ScanAction",
                      @"Color"];
-    RZWKWeb *wkWeb = [[RZWKWeb alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64) withNativeMethodArr:arr];
+    RZWKWeb *wkWeb = [RZWKWeb new];
+    wkWeb.showHUD = YES;
+    wkWeb.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     [self.view addSubview:wkWeb];
     
-    [wkWeb loadHTMLString:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
+    [wkWeb loadDataWithHTMLString:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
     wkWeb.delegate = self;
 }
 

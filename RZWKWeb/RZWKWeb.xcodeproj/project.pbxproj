@@ -16,6 +16,9 @@
 		2A982C931ED925F400225BE5 /* RZWKWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A982C921ED925F400225BE5 /* RZWKWeb.m */; };
 		2A982C951ED9272100225BE5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A982C941ED9272100225BE5 /* index.html */; };
 		2A982C9B1ED94FE700225BE5 /* RZWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A982C9A1ED94FE700225BE5 /* RZWebVC.m */; };
+		2AE928731F21E3B10024A3E2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2AE9286F1F21E3B10024A3E2 /* LICENSE */; };
+		2AE928741F21E3B10024A3E2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE928711F21E3B10024A3E2 /* MBProgressHUD.m */; };
+		2AE928751F21E3B10024A3E2 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 2AE928721F21E3B10024A3E2 /* README.mdown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,10 @@
 		2A982C941ED9272100225BE5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2A982C991ED94FE700225BE5 /* RZWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZWebVC.h; sourceTree = "<group>"; };
 		2A982C9A1ED94FE700225BE5 /* RZWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZWebVC.m; sourceTree = "<group>"; };
+		2AE9286F1F21E3B10024A3E2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2AE928701F21E3B10024A3E2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2AE928711F21E3B10024A3E2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2AE928721F21E3B10024A3E2 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 		2A982C781ED925B100225BE5 /* RZWKWeb */ = {
 			isa = PBXGroup;
 			children = (
+				2AE9286E1F21E3B10024A3E2 /* MBProgressHUD */,
 				2A982C941ED9272100225BE5 /* index.html */,
 				2A982C901ED925F400225BE5 /* RZWKWeb */,
 				2A982C7C1ED925B100225BE5 /* AppDelegate.h */,
@@ -98,6 +106,17 @@
 				2A982C921ED925F400225BE5 /* RZWKWeb.m */,
 			);
 			path = RZWKWeb;
+			sourceTree = "<group>";
+		};
+		2AE9286E1F21E3B10024A3E2 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2AE9286F1F21E3B10024A3E2 /* LICENSE */,
+				2AE928701F21E3B10024A3E2 /* MBProgressHUD.h */,
+				2AE928711F21E3B10024A3E2 /* MBProgressHUD.m */,
+				2AE928721F21E3B10024A3E2 /* README.mdown */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +181,7 @@
 				2A982C951ED9272100225BE5 /* index.html in Resources */,
 				2A982C861ED925B100225BE5 /* Assets.xcassets in Resources */,
 				2A982C841ED925B100225BE5 /* Main.storyboard in Resources */,
+				2AE928731F21E3B10024A3E2 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +193,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A982C931ED925F400225BE5 /* RZWKWeb.m in Sources */,
+				2AE928741F21E3B10024A3E2 /* MBProgressHUD.m in Sources */,
+				2AE928751F21E3B10024A3E2 /* README.mdown in Sources */,
 				2A982C811ED925B100225BE5 /* ViewController.m in Sources */,
 				2A982C7E1ED925B100225BE5 /* AppDelegate.m in Sources */,
 				2A982C9B1ED94FE700225BE5 /* RZWebVC.m in Sources */,
@@ -331,6 +353,7 @@
 				2A982C8F1ED925B100225BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
