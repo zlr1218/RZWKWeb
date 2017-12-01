@@ -24,13 +24,21 @@
                      @"Pay",
                      @"ScanAction",
                      @"Color"];
-    RZWKWeb *wkWeb = [RZWKWeb new];
-    wkWeb.showHUD = YES;
-    wkWeb.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    [self.view addSubview:wkWeb];
     
-    [wkWeb loadDataWithHTMLString:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
-    wkWeb.delegate = self;
+    RZWKWeb *wkWeb = [RZWKWeb rzwk_WebWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) delegate:self];
+    [self.view addSubview:wkWeb];
+    wkWeb.showProgress = YES;
+    [wkWeb rzwk_addScriptMessageNameArray:arr];
+//    [wkWeb rzwk_loadHTMLFileName:@"index"];
+    [wkWeb rzwk_loadURLString:@"https://www.baidu.com"];
+    
+//    [wkWeb loadDataWithHTMLString:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
+//    [wkWeb loadDataWithUrl:@"http://192.168.1.5:8089/m/debt/6478/member/debtDetail.jhtml?appMark=1&flag=0&token=JeAS3wgODhsV6qreWi7byeB131kiR5m8fhzWz9WUN1g="];
+//    wkWeb.delegate = self;
+}
+
+- (void)handleProgress:(CGFloat)progress {
+    NSLog(@"%f", progress);
 }
 
 - (void)handleScriptMessage:(WKScriptMessage *)message withWKWebView:(WKWebView *)webView {

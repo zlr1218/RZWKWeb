@@ -13,8 +13,26 @@
 @protocol RZWKWebDelegate <NSObject>
 
 @optional
+// 获取当前Web的title
 - (void)handleTitle:(NSString *)title;
+
+// 获取当前Web的加载进度
+- (void)handleProgress:(CGFloat)progress;
+
+// 获取当前Web请求的URL
+- (void)handleCurrentURL:(NSURL *)URL;
+
+// 当Web内容开始在Web视图中加载时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation;
+
+// Web视图开始接收Web内容时调用
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation;
+
+// Web视图加载完成时调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;
+
+// 从网页收到脚本消息时调用
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message;
 - (void)handleScriptMessage:(WKScriptMessage *)message withWKWebView:(WKWebView *)webView;
 
 @end
@@ -24,30 +42,67 @@
 /** 代理 */
 @property (nonatomic, weak) id <RZWKWebDelegate> delegate;
 
-/** 是否使用进度条 */
-@property (nonatomic, assign) BOOL showProgress;
-/** 是否使用加载指示器 */
-@property (nonatomic, assign) BOOL showHUD;
-
-//+ (instancetype)shareInstance;
-
+/**
+ 是否可以返回上级页面
+ */
+@property (nonatomic, readonly) BOOL RZWK_canGoBack;
 
 /**
- 当需要添加与JS交互的方法时调用
- 
- @param url 加载链接
- @param mArr JS调用原生方法的数组
+ 是否可以进入下级页面
  */
-- (void)loadDataWithUrl:(NSString *)url WithMethodArr:(NSArray *)mArr;
+@property (nonatomic, readonly) BOOL RZWK_canGoForward;
 
-/** 加载数据 */
-- (void)loadDataWithUrl:(NSString *)url;
+/**
+ 需要拦截的 urlScheme，先设置此项，再 调用 ba_web_decidePolicyForNavigationActionBlock 来处理，详见 demo
+ */
+@property(nonatomic, strong) NSString *RZWK_urlScheme;
 
-/** 加载本地网页 */
-- (void)loadDataWithHTMLString:(NSString *)html;
+/**
+ 是否需要自动设定高度
+ */
+@property (nonatomic, assign) BOOL RZWK_isAutoHeight;
 
-/** 后退、前进 */
-- (BOOL)back;
-- (BOOL)forward;
+/** 是否使用进度条 */
+@property (nonatomic, assign) BOOL showProgress;
+
+
++ (instancetype)rzwk_WebWithFrame:(CGRect)frame delegate:(id<RZWKWebDelegate>)delegate;
+
+
+- (void)rzwk_loadRequest:(NSURLRequest *)request;
+
+- (void)rzwk_loadURL:(NSURL *)URL;
+
+- (void)rzwk_loadURLString:(NSString *)URLString;
+
+/**
+ 加载本地网页
+ */
+- (void)rzwk_loadHTMLFileName:(NSString *)htmlName;
+
+/**
+ 加载本地 htmlString
+ */
+- (void)rzwk_loadHTMLString:(NSString *)htmlString;
+
+/**
+ 添加JS调用OC的方法数组
+ */
+- (void)rzwk_addScriptMessageNameArray:(NSArray *)nameArray;
+
+/**
+ 返回上一级页面
+ */
+- (void)rzwk_goBack;
+
+/**
+ 进入下一级页面
+ */
+- (void)rzwk_goForward;
+
+/**
+ 刷新当前web
+ */
+- (void)rzwk_reload;
 
 @end
