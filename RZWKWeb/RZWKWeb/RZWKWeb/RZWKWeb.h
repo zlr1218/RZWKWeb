@@ -35,6 +35,9 @@
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message;
 - (void)handleScriptMessage:(WKScriptMessage *)message withWKWebView:(WKWebView *)webView;
 
+// 在发送请求之前，决定是否跳转，如果不添加这个，那么 wkwebview 跳转不了 AppStore 和 打电话，所谓拦截 URL 进行进一步处理，就在这里处理
+- (void)webView:(WKWebView *)webView decidePolicyForURL:(NSString *)url_scheme;
+
 @end
 
 @interface RZWKWeb : UIView
@@ -56,11 +59,6 @@
  需要拦截的 urlScheme，先设置此项，再 调用 ba_web_decidePolicyForNavigationActionBlock 来处理，详见 demo
  */
 @property(nonatomic, strong) NSString *RZWK_urlScheme;
-
-/**
- 是否需要自动设定高度
- */
-@property (nonatomic, assign) BOOL RZWK_isAutoHeight;
 
 /** 是否使用进度条 */
 @property (nonatomic, assign) BOOL showProgress;

@@ -23,7 +23,8 @@
 }
 
 - (IBAction)pushToWKWebVC:(id)sender {
-    [self presentViewController:[RZWebVC new] animated:YES completion:nil];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:[RZWebVC new]];
+    [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
 @end
